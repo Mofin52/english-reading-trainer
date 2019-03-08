@@ -1,7 +1,53 @@
 import React from 'react';
+import axios from 'axios';
 
-const App = () => {
-    return <h1>English Reading Trainer</h1>
+const litipsum = axios.create({
+   baseURL: 'https://litipsum.com/api'
+});
+
+const yandexTranslate = axios.create({
+    baseURL: 'https://translate.yandex.net/api/v1.5/tr.json/translate',
+    params: {
+        key: 'trnsl.1.1.20190308T211558Z.49bf96bf6745f192.7c91c925ce95fabc97540b9fa542490116487453',
+        lang: 'en-ru',
+        format: 'plain',
+    }
+})
+
+class App extends React.Component {
+
+    state = {
+        text: ''
+    }
+    
+    translateWord = () => {
+        yandexTranslate.get('', {
+            params: {
+                text: 'tremendous'
+            }
+        }).then((response) => {
+            console.log(response.data.text[0]);
+        })
+    }
+
+    loadData = () => {
+        litipsum.get('/5/json').then((response) => {
+            this.setState({
+                text: response.data.text.join('*****')
+            });    
+        });
+    }
+
+    render(){
+        return (
+            <div>
+                <h1>English Reading Trainer</h1>
+                <button onClick={this.loadData}>Click</button>
+                <button onClick={this.translateWord}>Translate</button>
+                <div>{this.state.text}</div>
+            </div>
+        );
+    }
 }
 
 export default App;
