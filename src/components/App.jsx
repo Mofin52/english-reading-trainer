@@ -20,21 +20,19 @@ class App extends React.Component {
         text: ''
     }
     
-    translateWord = () => {
-        yandexTranslate.get('', {
+    translateWord = async () => {
+        const response = await yandexTranslate.get('', {
             params: {
                 text: 'tremendous'
             }
-        }).then((response) => {
-            console.log(response.data.text[0]);
         })
+        console.log(response.data.text[0]);
     }
 
-    loadData = () => {
-        litipsum.get('/5/json').then((response) => {
-            this.setState({
-                text: response.data.text.join('*****')
-            });    
+    loadData = async () => {
+        const response = await litipsum.get('/5/json');
+        this.setState({
+            text: response.data.text.join('*****')
         });
     }
 
