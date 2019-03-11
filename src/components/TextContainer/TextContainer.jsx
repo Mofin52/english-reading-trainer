@@ -10,8 +10,8 @@ class TextContainer extends React.Component {
     }
 
     handleTextSelection = async () => {
-        const selection = window.getSelection().toString().replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"");
-        if (selection) {
+        const selection = window.getSelection().toString().replace(/[.',\/#!$%\^&\*;:{}=\-_`~()”]/g,"");
+        if (selection && selection !== ' ') {
             await this.props.translateSelection(selection);
         }
     }

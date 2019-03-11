@@ -1,4 +1,4 @@
-export default (state = {test: 'test'}, action) => {
+export default (state = {}, action) => {
     switch(action.type) {
         case 'TRANSLATE_SELECTION':
             if(state[action.payload.selectedText] !== undefined) {
