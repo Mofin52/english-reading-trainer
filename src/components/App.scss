@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css?family=Slabo+27px');
+
+body {
+    background-color: seashell;
+    font-family: 'Slabo 27px';
+    font-size: 24px;
+    color: #2F4858;
+}
+
+.reading-trainer__content {
+    margin: 2em auto 1em;
+    display: flex;
+    width: 100%;
+    max-width: 1000px;
+    border: 1px solid #DECCCA;
+    border-radius: 10px 0 0 10px;
+    justify-content: space-between;
+}

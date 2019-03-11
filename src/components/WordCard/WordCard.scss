@@ -1,0 +1,25 @@
+.reading-trainer__card {
+    background-color: #ffff88;
+    box-sizing: border-box;
+    padding: 5px 10px;
+    box-shadow: -2px 0 5px 0 rgba(0,0,0,.3);
+    margin: 0 -10px 0 10px;
+    p {
+        &.word {
+            font-weight: bold;
+            font-size: 28px;
+        }
+        &.translation {
+            font-weight: normal;
+            font-size: 24px;
+        }
+        margin: 0;
+        padding: 0;
+    }
+}
+
+@for $i from 1 through 100 {
+    .reading-trainer__card:nth-child(#{$i}) { 
+      transform: rotate(random(4) - 2 + deg);
+    }
+  }
