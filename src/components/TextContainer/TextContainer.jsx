@@ -9,10 +9,10 @@ class TextContainer extends React.Component {
         this.props.loadText();
     }
 
-    handleTextSelection = async () => {
+    handleTextSelection = () => {
         const selection = window.getSelection().toString().replace(/[.',\/#!$%\^&\*;:{}=\-_`~()”]/g,"");
         if (selection && selection !== ' ') {
-            await this.props.translateSelection(selection);
+            selection.split(" ").map((word) => this.props.translateSelection(word));
         }
     }
 
