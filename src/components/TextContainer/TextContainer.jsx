@@ -10,7 +10,7 @@ class TextContainer extends React.Component {
     }
 
     handleTextSelection = () => {
-        const selection = window.getSelection().toString().replace(/[.',\/#!$%\^&\*;:{}=\-_`~()”]/g,"");
+        const selection = window.getSelection().toString().replace(/[.',\/#!$%\^&\*;:{}=\-_`~()“”"]/g,"");
         if (selection && selection.length) {
             selection
                 .split(" ")
