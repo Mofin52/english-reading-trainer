@@ -23,3 +23,7 @@ export const loadText = () => async (dispatch, getState) => {
         payload: response.data
     });
 }
+
+export const switchToTestPhase = () => {
+    return { type: 'SWITCH_STATE_TEST' };
+}
