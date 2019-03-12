@@ -1,19 +1,18 @@
 import React from 'react';
-import AppHeader from './AppHeader/AppHeader';
-import TextContainer from './TextContainer/TextContainer';
-import SideNotes from './SideNotes/SideNotes';
-import TrainerControls from './TrainerControls/TrainerControls';
+import { BrowserRouter, Route } from 'react-router-dom';
+import Reading from './Reading/Reading';
+import Testing from './Testing/Testing';
 import './App.scss';
 
 const App = () => {
     return (
         <div className='reading-trainer'>
-            <AppHeader/>
-            <div className='reading-trainer__content'>
-                <TrainerControls />
-                <TextContainer/>
-                <SideNotes/>
-            </div>
+            <BrowserRouter>
+                <div>
+                    <Route path='/' exact component={Reading}/>
+                    <Route path='/testing' exact component={Testing}/>
+                </div>
+            </BrowserRouter>
         </div>
     )
 }

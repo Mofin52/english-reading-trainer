@@ -6,7 +6,9 @@ import './TextContainer.scss';
 class TextContainer extends React.Component {
 
     componentDidMount() {
-        this.props.loadText();
+        if (this.props.text === undefined) {
+            this.props.loadText();
+        }
     }
 
     handleTextSelection = () => {

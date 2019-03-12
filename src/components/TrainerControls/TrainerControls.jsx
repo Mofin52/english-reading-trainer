@@ -1,29 +1,25 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { switchToTestPhase } from '../../actions';
+import { Link } from  'react-router-dom';
 import './TrainerControls.scss';
 
-class TrainerControls extends React.Component {
-
-    handleTestMeClick = (ev) => {
-        ev.preventDefault();
-        this.props.switchToTestPhase();
-    }
-
-   
+class TrainerControls extends React.Component {   
     render() {
-       return (
+       if (this.props.mode === 'reading') {
+        return (
             <div className='reading-trainer__controls'>
-                <button onClick={this.handleTestMeClick}>Test me!</button>
+                <Link to="/testing"><button>Test me!</button></Link>
             </div>
         );
+       }
+
+       if (this.props.mode === 'testing') {
+            return (
+                <div className='reading-trainer__controls'>
+                    <Link to="/"><button>Back to text</button></Link>
+                </div>
+            );
+       }
     } 
 };
 
-const mapStateToProps = (state) => {
-    return {
-        phase: state.phase
-    };
-}
-
-export default connect(mapStateToProps, { switchToTestPhase })(TrainerControls);
+export default TrainerControls;

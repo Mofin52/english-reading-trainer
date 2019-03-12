@@ -8,9 +8,15 @@ const randomNum = Math.random();
 class SideNotes extends React.Component {
     
     renderCardsList() {
-        return Object.keys(this.props.cards).map((word, i) => {
-            return <WordCard className='testytest' word={word} translation={this.props.cards[word]} key={randomNum * 17 * (i + 1)}/>
-        });
+        return Object.keys(this.props.cards)
+            .map((word, i) => {
+                return <WordCard
+                    className='testytest'
+                    word={word}
+                    translation={this.props.cards[word]}
+                    key={randomNum * 17 * (i + 1)}
+                />
+            });
     }
 
     render() {
