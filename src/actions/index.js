@@ -16,6 +16,13 @@ export const translateSelection = (selectedText) => async (dispatch, getState) =
     });
 };
 
+export const registerWordCard = (wordCard) => {
+    return {
+        type: 'REGISTER_WORDCARD',
+        payload: wordCard
+    }
+}
+
 export const loadText = () => async (dispatch, getState) => {
     const response = await litipsum.get('/5/json');
     dispatch({

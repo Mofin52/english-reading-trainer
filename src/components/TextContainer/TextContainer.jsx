@@ -17,7 +17,11 @@ class TextContainer extends React.Component {
                 .filter(el => el.length)
                 .map(
                     word => {
-                        this.props.translateSelection(word)
+                        if (this.props.translation[word] !== undefined) {
+                            this.props.wordCards[word].current.classList.add('repeat');
+                        } else {
+                            this.props.translateSelection(word)
+                        }
                     }
                 );
         }
@@ -38,7 +42,8 @@ class TextContainer extends React.Component {
 const mapStateToProps = (state) => {
     return {
         text: state.text.text,
-        translation: state.translation
+        translation: state.translation,
+        wordCards: state.wordCards
     }
 }
 
