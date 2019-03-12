@@ -16,6 +16,14 @@ export const translateSelection = (selectedText) => async (dispatch, getState) =
     });
 };
 
+export const submitCheckResult = (results) => {
+    return {
+        type: 'SUBMIT_RESULT',
+        payload: results
+    }
+
+}
+
 export const registerWordCard = (wordCard) => {
     return {
         type: 'REGISTER_WORDCARD',

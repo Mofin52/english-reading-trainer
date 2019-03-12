@@ -5,7 +5,7 @@ import './WordCard.scss';
 
 const WordCard = (props) => {
     const ref = React.createRef();
-
+    
     props.registerWordCard({
         dom: ref,
         word: props.word
@@ -14,7 +14,7 @@ const WordCard = (props) => {
     return (
         <div className='reading-trainer__card' ref={ref}>
             <p className='word'>{props.word}</p>
-            <p className='translation'>{props.withInput ? <input className='wordFormInput'/> : props.translation}</p>
+            <p className='translation'>{props.translation}</p>
         </div>
     );
 }

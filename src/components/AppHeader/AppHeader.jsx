@@ -15,13 +15,23 @@ class AppHeader extends React.Component {
             )    
         }
         if (this.props.mode === 'testing') {
-            return (
-                <div className='reading-trainer__header'>
-                    <h1>English Reading Trainer - Test</h1>
-                    <p>Do you remember all words, you've translated from "{this.props.title}" page?</p>
-                    <p>Answer the test and get your mark.</p>
-                </div>
-            )
+            if (!Object.keys(this.props.cards).length) {
+                return (
+                    <div className='reading-trainer__header'>
+                        <h1>English Reading Trainer - Test</h1>
+                        <p>Start by reading a text and translating unknown words</p>
+                        <p>Then answer the test and get your mark.</p>
+                    </div>
+                )
+            } else {
+                return (
+                    <div className='reading-trainer__header'>
+                        <h1>English Reading Trainer - Test</h1>
+                        <p>Do you remember all words, you've translated from "{this.props.title}" page?</p>
+                        <p>Now answer the test and get your mark.</p>
+                    </div>
+                )
+            }
         }
     }
 }
@@ -29,7 +39,8 @@ class AppHeader extends React.Component {
 const mapStateToProps = (state) => {
     return {
         title: state.text.title,
-        words: state.text.words
+        words: state.text.words,
+        cards: state.wordCards,
     }
 }
 

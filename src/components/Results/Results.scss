@@ -1,0 +1,14 @@
+.reading-trainer__results {
+    text-align: center;
+    margin-top: 100px;
+    .reading-trainer__mark {
+        font-weight: bold;
+        font-size: 32px;
+        &.good {
+            color: green;
+        }
+        &.bad {
+            color: red;
+        }
+    }
+}

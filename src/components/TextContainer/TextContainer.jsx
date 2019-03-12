@@ -12,7 +12,7 @@ class TextContainer extends React.Component {
     }
 
     handleTextSelection = () => {
-        const selection = window.getSelection().toString().replace(/[.',\/#!$%\^&\*;:{}=\-_`~()“”"]/g,"");
+        const selection = window.getSelection().toString().replace(/[.',\/#!?$%\^&\*;:{}=\-_`~()“”"]/g,"");
         if (selection && selection.length) {
             selection
                 .split(" ")
@@ -29,13 +29,21 @@ class TextContainer extends React.Component {
         }
     }
 
+    renderText() {
+        if (this.props.text) {
+            return this.props.text.map(el =>
+                <p key={new Date().getTime() * Math.random()}>{el}</p>
+            );
+        }
+    }
+
     render() {
         return(
             <div
                 className='reading-trainer__text-container'
                 onMouseUp={this.handleTextSelection}
             >
-                {this.props.text}
+                {this.renderText()}
             </div>
         );
     }
