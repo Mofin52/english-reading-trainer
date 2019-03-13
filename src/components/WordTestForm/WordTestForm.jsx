@@ -33,15 +33,16 @@ class WordTestForm extends React.Component {
             const totalFields = numOfTranslations <= 10 ? numOfTranslations : 10;
             Object.keys(this.props.translation).map((el, i) => {
                 if (i < 10) {
-                    const inputElement = this.refs[el].getRenderedComponent().refs[el];
-                    inputElement.classList.add('solved');
-                    inputElement.disabled = true;
+                    const inputCard = this.refs[el].getRenderedComponent().refs[el];
+                    const inputCard_input = this.refs[el].getRenderedComponent().refs[`${el}_input`];
+                    inputCard.classList.add('solved');
+                    inputCard_input.disabled = true;
                     if (formValues[el] && formValues[el].toLowerCase() === this.props.translation[el].toLowerCase()) {
-                        inputElement.classList.add('correct')
+                        inputCard.classList.add('correct')
                         corrects += 1;
                     } else {
-                        inputElement.classList.add('wrong')
-                        inputElement.value += ` (${this.props.translation[el]})`;
+                        inputCard.classList.add('wrong')
+                        inputCard_input.value += ` (${this.props.translation[el]})`;
                     }
                 }
             });
