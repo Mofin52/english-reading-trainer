@@ -27,9 +27,10 @@ class WordTestForm extends React.Component {
     }
 
     onSubmit = (formValues) => {
-        if (Object.keys(this.props.translation).length > 0) {
+        const numOfTranslations = Object.keys(this.props.translation).length;
+        if (numOfTranslations > 0) {
             let corrects = 0;
-            const totalFields = Object.keys(this.props.translation).length <= 10 ? Object.keys(this.props.translation).length : 10;
+            const totalFields = numOfTranslations <= 10 ? numOfTranslations : 10;
             Object.keys(this.props.translation).map((el, i) => {
                 if (i < 10) {
                     const inputElement = this.refs[el].getRenderedComponent().refs[el];
@@ -54,11 +55,12 @@ class WordTestForm extends React.Component {
     }
 
     render() {
+        //const submitClassName = `reading-trainer__submit`
         return (
             <div className='reading-trainer__form'>
                 <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
                     {this.renderFormWordCards()}
-                    <button className='reading-trainer__submit'>Check</button>
+                    {Object.keys(this.props.translation).length > 0 ? <button className='reading-trainer__submit'>Check</button> : null }
                 </form>
             </div>
         );

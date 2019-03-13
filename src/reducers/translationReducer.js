@@ -8,7 +8,6 @@ export default (state = {}, action) => {
                     ...state,
                     [action.payload.selectedText]: action.payload.translation
                 };
-
             }
         default:
             return state;

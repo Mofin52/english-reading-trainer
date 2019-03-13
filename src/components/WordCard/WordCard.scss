@@ -2,8 +2,8 @@
     background-color: #ffff88;
     box-sizing: border-box;
     padding: 5px 10px;
-    box-shadow: -2px 0 5px 0 rgba(0,0,0,.3);
-    margin: 0 -10px 0 10px;
+    box-shadow: -5px 3px 5px 0 rgba(0, 0, 0, 0.2);
+    margin: 0 -10px 15px 10px;
     transition: margin .5s ease-out, background-color .5s linear;
     &.repeat {
         margin-left: -30px;

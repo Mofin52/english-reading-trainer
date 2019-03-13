@@ -14,6 +14,9 @@
         border: none;
         cursor: pointer;
         transition: transform .3s, background-color .3s;
+        &.reset {
+            width: 120px;
+        }
         &:active {
             background-color: #393d51;
             transform: translateY(-20px);

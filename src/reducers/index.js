@@ -5,10 +5,19 @@ import translationReducer from './translationReducer';
 import wordCardsReducer from './wordCardsReducer';
 import resultReducer from './resultReducer';
 
-export default combineReducers({
+const appReducer = combineReducers({
     text: loadTextReducer,
     translation: translationReducer,
     wordCards: wordCardsReducer,
     form: formReducer,
     result: resultReducer
-});
+})
+  
+const rootReducer = (state, action) => {
+    if (action.type === 'RESET_STATE') {
+      state = undefined
+    }
+    return appReducer(state, action)
+}
+
+export default rootReducer;
