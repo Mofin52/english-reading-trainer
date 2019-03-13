@@ -1,19 +1,22 @@
-import translator from '../apis/yandexTranslate';
-import litipsum from '../apis/litipsum';
-
 export const translateSelection = (selectedText) => async (dispatch) => {
-    const response = await translator.get('', {
-        params: {
-            text: selectedText
-        }
-    });
-    dispatch({
-        type: 'TRANSLATE_SELECTION',
-        payload: {
-            selectedText: selectedText, 
-            translation: response.data.text[0].trim()
-        }
-    });
+    const params= {
+        key: 'trnsl.1.1.20190308T211558Z.49bf96bf6745f192.7c91c925ce95fabc97540b9fa542490116487453',
+        lang: 'en-ru',
+        format: 'plain',
+    }
+
+    fetch(`https://translate.yandex.net/api/v1.5/tr.json/translate?key=${params.key}&lang=${params.lang}&format=${params.format}&text=${selectedText}`)
+        .then((response) => {
+            response.json().then((data) => {
+                dispatch({
+                    type: 'TRANSLATE_SELECTION',
+                    payload: {
+                        selectedText: selectedText, 
+                        translation: data.text[0].trim()
+                    }
+                });
+            });
+        });
 };
 
 export const submitCheckResult = (results) => {
@@ -31,10 +34,13 @@ export const registerWordCard = (wordCard) => {
 }
 
 export const loadText = () => async (dispatch) => {
-    const response = await litipsum.get('/5/json');
-    dispatch({
-        type: 'LOAD_TEXT',
-        payload: response.data
+    fetch('https://litipsum.com/api/5/json').then(response => {
+        response.json().then(function(data) {
+            dispatch({
+                type: 'LOAD_TEXT',
+                payload: data
+            });
+        });
     });
 }
 
