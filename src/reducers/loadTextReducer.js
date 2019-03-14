@@ -1,4 +1,8 @@
-export default (state = {}, action) => {
+export default (state = {
+    text: [],
+    title: '',
+    words: 0
+}, action) => {
     switch(action.type) {
         case 'LOAD_TEXT':
             return {

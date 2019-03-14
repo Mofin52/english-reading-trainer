@@ -6,7 +6,7 @@ import './TextContainer.scss';
 class TextContainer extends React.Component {
 
     componentDidMount() {
-        if (this.props.text === undefined) {
+        if (this.props.text.length === 0) {
             this.props.loadText();
         }
     }
@@ -30,7 +30,7 @@ class TextContainer extends React.Component {
     }
 
     renderText() {
-        if (this.props.text) {
+        if (this.props.text.length) {
             return this.props.text.map(el =>
                 <p key={new Date().getTime() * Math.random()}>{el}</p>
             );

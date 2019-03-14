@@ -4,35 +4,34 @@ import './AppHeader.scss';
 
 class AppHeader extends React.Component {
     render(){
-        if (this.props.mode === 'reading') {
-            return (
+        return (            
                 <div className='reading-trainer__header'>
-                    <h1>English Reading Trainer</h1>
-                    <p>You're reading a page from "{this.props.title}"</p>
-                    <p>Words: {this.props.words}</p>
-                    <p>Found and unknown one? Select it to translate!</p>
+                    <h1>English Reading Trainer{this.props.mode === 'testing' ? ' - Test' : ''}</h1>
+                    
+                    <p>
+                        {
+                            this.props.mode === 'testing' && !Object.keys(this.props.cards).length ?
+                                'Start by reading a text and translating unknown words' :
+                                this.props.mode === 'testing' ?
+                                    `Do you remember all words, you've translated from "${this.props.title}" page?` :
+                                    `You\'re reading a page from "${this.props.title}"`
+                        }
+                    </p>
+                    
+                    <p>
+                        {
+                            this.props.mode === 'testing' && !Object.keys(this.props.cards).length ?
+                                'Then answer the test and get your mark.' :
+                                this.props.mode === 'testing' ?
+                                    'Now answer the test and get your mark.':
+                                    `Words: ${this.props.words}`
+                        }
+                    </p>
+
+                    {this.props.mode === 'reading' ? <p>Found and unknown one? Select it to translate!</p> : null }
+
                 </div>
-            )    
-        }
-        if (this.props.mode === 'testing') {
-            if (!Object.keys(this.props.cards).length) {
-                return (
-                    <div className='reading-trainer__header'>
-                        <h1>English Reading Trainer - Test</h1>
-                        <p>Start by reading a text and translating unknown words</p>
-                        <p>Then answer the test and get your mark.</p>
-                    </div>
-                )
-            } else {
-                return (
-                    <div className='reading-trainer__header'>
-                        <h1>English Reading Trainer - Test</h1>
-                        <p>Do you remember all words, you've translated from "{this.props.title}" page?</p>
-                        <p>Now answer the test and get your mark.</p>
-                    </div>
-                )
-            }
-        }
+        )
     }
 }
 

@@ -5,23 +5,26 @@ import { resetState } from '../../actions';
 import './TrainerControls.scss';
 
 class TrainerControls extends React.Component {   
-    render() {
-       if (this.props.mode === 'reading') {
+
+    renderReadingControls() {
         return (
             <div className='reading-trainer__controls'>
                 {Object.keys(this.props.translation).length > 0 ? <Link to="/testing"><button>Test me!</button></Link> : null}
             </div>
         );
-       }
+    }
+    
+    renderTestingControls() {
+        return (
+            <div className='reading-trainer__controls'>
+                <Link to="/"><button onClick={this.props.resetState} className="reset">Back & Reset</button></Link>
+            </div>
+        );
+    }
 
-       if (this.props.mode === 'testing') {
-            return (
-                <div className='reading-trainer__controls'>
-                    <Link to="/"><button onClick={this.props.resetState} className="reset">Back & Reset</button></Link>
-                </div>
-            );
-       }
-    } 
+    render() {
+        return this.props.mode === 'reading' ? this.renderReadingControls() : this.renderTestingControls();
+    }
 };
 
 const mapStateToProps = (state) => {
