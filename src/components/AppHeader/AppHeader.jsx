@@ -10,21 +10,17 @@ class AppHeader extends React.Component {
                     
                     <p>
                         {
-                            this.props.mode === 'testing' && !Object.keys(this.props.cards).length ?
-                                'Start by reading a text and translating unknown words' :
-                                this.props.mode === 'testing' ?
-                                    `Do you remember all words, you've translated from "${this.props.title}" page?` :
-                                    `You\'re reading a page from "${this.props.title}"`
+                            this.props.mode === 'testing' ?
+                                `Do you remember all words, you've translated from "${this.props.title}" page?` :
+                                `You\'re reading a page from "${this.props.title}"`
                         }
                     </p>
                     
                     <p>
                         {
-                            this.props.mode === 'testing' && !Object.keys(this.props.cards).length ?
-                                'Then answer the test and get your mark.' :
-                                this.props.mode === 'testing' ?
-                                    'Now answer the test and get your mark.':
-                                    `Words: ${this.props.words}`
+                            this.props.mode === 'testing' ?
+                                'Now answer the test and get your mark.':
+                                `Words: ${this.props.words}`
                         }
                     </p>
 
