@@ -32,7 +32,7 @@ class TextContainer extends React.Component {
     renderText() {
         if (this.props.text.length) {
             return this.props.text.map(el =>
-                <p key={new Date().getTime() * Math.random()}>{el}</p>
+                <p key={el.slice(0, 15)}>{el}</p>
             );
         }
     }

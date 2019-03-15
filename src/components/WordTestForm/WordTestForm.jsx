@@ -6,7 +6,6 @@ import { submitCheckResult } from '../../actions'
 import './WordTestForm.scss';
 import RenderForm from './RenderForm';
 
-const randomNum = Math.random();
 const MAX_FIELDS = 10;
 const MAX_MARK = 10;
 
@@ -22,7 +21,7 @@ class WordTestForm extends React.Component {
                         ref={word}
                         component={RenderForm}
                         forwardRef={true}
-                        key={randomNum * 23 * (i + 1)}
+                        key={word}
                     /> 
                 }
             });

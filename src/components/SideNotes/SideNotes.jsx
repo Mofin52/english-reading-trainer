@@ -3,8 +3,6 @@ import './SideNotes.scss';
 import WordCard from '../WordCard/WordCard';
 import { connect } from 'react-redux';
 
-const randomNum = Math.random();
-
 class SideNotes extends React.Component {
     
     renderCardsList() {
@@ -14,7 +12,7 @@ class SideNotes extends React.Component {
                     className='testytest'
                     word={word}
                     translation={this.props.cards[word]}
-                    key={randomNum * 17 * (i + 1)}
+                    key={word}
                 />
             });
     }
