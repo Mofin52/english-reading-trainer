@@ -10,7 +10,10 @@ const MAX_FIELDS = 10;
 const MAX_MARK = 10;
 
 class WordTestForm extends React.Component {
-
+    setRef = elem => {
+        this[this.props.label] = elem
+    };
+    
     renderFormWordCards = () => {
         return Object.keys(this.props.translation)
             .map((word, i) => {
@@ -18,7 +21,7 @@ class WordTestForm extends React.Component {
                     return <Field
                         label={word}
                         name={word}
-                        ref={word}
+                        ref={(node) => this[word] = node }
                         component={RenderForm}
                         forwardRef={true}
                         key={word}
@@ -32,8 +35,9 @@ class WordTestForm extends React.Component {
         const totalFields = Object.keys(this.props.translation).length <= MAX_FIELDS ? Object.keys(this.props.translation).length : MAX_FIELDS;
         Object.keys(this.props.translation).map((el, i) => {
             if (i < totalFields) {
-                const inputCard = this.refs[el].getRenderedComponent().refs[el];
-                const inputCard_input = this.refs[el].getRenderedComponent().refs[`${el}_input`];
+                console.log(this);
+                const inputCard = this[el].getRenderedComponent()[el];
+                const inputCard_input = this[el].getRenderedComponent()[`${el}_input`];
                 inputCard.classList.add('solved');
                 inputCard_input.disabled = true;
                 if (formValues[el] && formValues[el].toLowerCase() === this.props.translation[el].toLowerCase()) {
