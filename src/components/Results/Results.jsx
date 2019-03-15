@@ -10,7 +10,7 @@ const Results = (props) => {
                 You answered right {props.corrects} out of {props.totalFields}.
                <br/>
                <span className={markClass}>
-                    ${props.mark} points
+                    {props.mark} points
                 </span>
             </div>
         );
