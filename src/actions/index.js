@@ -50,3 +50,10 @@ export const resetState = () => {
         type: 'RESET_STATE'
     }
 }
+
+export const saveTime = (time) => {
+    return {
+        type: 'SAVE_TIME',
+        payload: time
+    }
+}

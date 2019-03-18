@@ -1,23 +1,28 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { Link } from  'react-router-dom';
-import { resetState } from '../../actions';
+import {connect} from 'react-redux';
+import {Link} from 'react-router-dom';
+import {resetState} from '../../actions';
 import './TrainerControls.scss';
 
-class TrainerControls extends React.Component {   
+class TrainerControls extends React.Component {
 
     renderReadingControls() {
         return (
             <div className='reading-trainer__controls'>
-                {Object.keys(this.props.translation).length > 0 ? <Link to="/testing"><button>Test me!</button></Link> : null}
+                {Object.keys(this.props.translation).length > 0 ?
+                    <Link to="/testing">
+                        <button>Test me!</button>
+                    </Link> : null}
             </div>
         );
     }
-    
+
     renderTestingControls() {
         return (
             <div className='reading-trainer__controls'>
-                <Link to="/"><button onClick={this.props.resetState} className="reset">Back & Reset</button></Link>
+                <Link to="/">
+                    <button onClick={this.props.resetState} className="reset">Back & Reset</button>
+                </Link>
             </div>
         );
     }
@@ -33,4 +38,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, { resetState })(TrainerControls);
+export default connect(mapStateToProps, {resetState})(TrainerControls);
