@@ -11,25 +11,10 @@ export default (state = {
                 ...state,
                 ...action.payload
             };
-        case 'SAVE_START_READING_DATE':
+        case 'SAVE_DATE':
             return {
                 ...state,
-                startReadingDate: action.payload.date
-            };
-        case 'SAVE_END_READING_DATE':
-            return {
-                ...state,
-                endReadingDate: action.payload.date
-            };
-        case 'SAVE_START_TESTING_DATE':
-            return {
-                ...state,
-                startTestingDate: action.payload.date
-            };
-        case 'SAVE_END_TESTING_DATE':
-            return {
-                ...state,
-                endTestingDate: action.payload.date
+                ...action.payload
             };
         default:
             return state;
