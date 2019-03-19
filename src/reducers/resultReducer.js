@@ -1,21 +1,35 @@
 export default (state = {
-    testSubmitted: false,
-    time: 0
+    startReadingDate: null,
+    endReadingDate: null,
+    startTestingDate: null,
+    endTestingDate: null,
+    totalTime: 0
 }, action) => {
     switch (action.type) {
         case 'SUBMIT_RESULT':
             return {
                 ...state,
-                ...action.payload,
-                testSubmitted: true
+                ...action.payload
             };
-        case 'SAVE_TIME':
-            console.log(state);
-            console.log(action);
-            let time = state.time += action.payload.time;
+        case 'SAVE_START_READING_DATE':
             return {
                 ...state,
-                time
+                startReadingDate: action.payload.date
+            };
+        case 'SAVE_END_READING_DATE':
+            return {
+                ...state,
+                endReadingDate: action.payload.date
+            };
+        case 'SAVE_START_TESTING_DATE':
+            return {
+                ...state,
+                startTestingDate: action.payload.date
+            };
+        case 'SAVE_END_TESTING_DATE':
+            return {
+                ...state,
+                endTestingDate: action.payload.date
             };
         default:
             return state;

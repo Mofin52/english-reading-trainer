@@ -28,7 +28,12 @@ class AppHeader extends React.Component {
 
                 {this.props.mode === 'reading' ? <p>Found and unknown one? Select it to translate!</p> : null}
 
-                <Timer/>
+                {
+                    this.props.mode === 'testing' ?
+                        !!this.props.result.endTestingDate ? null :
+                            <Timer startDate={this.props.result.startTestingDate}/> :
+                        <Timer startDate={this.props.result.startReadingDate}/>
+                }
 
             </div>
         )
@@ -40,6 +45,7 @@ const mapStateToProps = (state) => {
         title: state.text.title,
         words: state.text.words,
         cards: state.wordCards,
+        result: state.result
     }
 }
 

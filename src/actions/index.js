@@ -51,9 +51,38 @@ export const resetState = () => {
     }
 }
 
-export const saveTime = (time) => {
+export const saveStartReadingDate = () => {
     return {
-        type: 'SAVE_TIME',
-        payload: time
+        type: 'SAVE_START_READING_DATE',
+        payload: {
+            date: new Date()
+        }
+    }
+}
+
+export const saveEndReadingDate = () => {
+    return {
+        type: 'SAVE_END_READING_DATE',
+        payload: {
+            date: new Date()
+        }
+    }
+}
+
+export const saveStartTestingDate = () => {
+    return {
+        type: 'SAVE_START_TESTING_DATE',
+        payload: {
+            date: new Date()
+        }
+    }
+}
+
+export const saveEndTestingDate = () => {
+    return {
+        type: 'SAVE_END_TESTING_DATE',
+        payload: {
+            date: new Date()
+        }
     }
 }

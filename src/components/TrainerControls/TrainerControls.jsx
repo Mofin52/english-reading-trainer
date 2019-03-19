@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
-import {resetState} from '../../actions';
+import {resetState, saveEndReadingDate} from '../../actions';
 import './TrainerControls.scss';
 
 class TrainerControls extends React.Component {
@@ -11,7 +11,7 @@ class TrainerControls extends React.Component {
             <div className='reading-trainer__controls'>
                 {Object.keys(this.props.translation).length > 0 ?
                     <Link to="/testing">
-                        <button>Test me!</button>
+                        <button onClick={this.props.saveEndReadingDate}>Test me!</button>
                     </Link> : null}
             </div>
         );
@@ -38,4 +38,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, {resetState})(TrainerControls);
+export default connect(mapStateToProps, {resetState, saveEndReadingDate})(TrainerControls);

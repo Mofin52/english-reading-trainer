@@ -1,8 +1,8 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { Field, reduxForm} from 'redux-form';
-import { Redirect } from 'react-router-dom';
-import { submitCheckResult } from '../../actions'
+import {connect} from 'react-redux';
+import {Field, reduxForm} from 'redux-form';
+import {Redirect} from 'react-router-dom';
+import {submitCheckResult, saveStartTestingDate, saveEndTestingDate, saveTotalTime} from '../../actions'
 import './WordTestForm.scss';
 import RenderForm from './RenderForm';
 
@@ -10,10 +10,15 @@ const MAX_FIELDS = 10;
 const MAX_MARK = 10;
 
 class WordTestForm extends React.Component {
+
+    componentDidMount() {
+        this.props.saveStartTestingDate();
+    }
+
     setRef = elem => {
         this[this.props.label] = elem
     };
-    
+
     renderFormWordCards = () => {
         return Object.keys(this.props.translation)
             .map((word, i) => {
@@ -21,21 +26,21 @@ class WordTestForm extends React.Component {
                     return <Field
                         label={word}
                         name={word}
-                        ref={(node) => this[word] = node }
+                        ref={(node) => this[word] = node}
                         component={RenderForm}
                         forwardRef={true}
                         key={word}
-                    /> 
+                    />
                 }
             });
     }
 
     onSubmit = (formValues) => {
+        this.props.saveEndTestingDate();
         let corrects = 0;
         const totalFields = Object.keys(this.props.translation).length <= MAX_FIELDS ? Object.keys(this.props.translation).length : MAX_FIELDS;
         Object.keys(this.props.translation).map((el, i) => {
             if (i < totalFields) {
-                console.log(this);
                 const inputCard = this[el].getRenderedComponent()[el];
                 const inputCard_input = this[el].getRenderedComponent()[`${el}_input`];
                 inputCard.classList.add('solved');
@@ -49,7 +54,7 @@ class WordTestForm extends React.Component {
                 }
             }
         });
-        const mark = Math.round((corrects/totalFields) * MAX_MARK);
+        const mark = Math.round((corrects / totalFields) * MAX_MARK);
         this.props.submitCheckResult({
             mark,
             corrects,
@@ -72,10 +77,15 @@ class WordTestForm extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        translation: state.translation
+        translation: state.translation,
+        result: state.result
     }
 }
 
-WordTestForm = connect(mapStateToProps, { submitCheckResult })(WordTestForm);
+WordTestForm = connect(mapStateToProps, {
+    submitCheckResult,
+    saveStartTestingDate,
+    saveEndTestingDate
+})(WordTestForm);
 
-export default reduxForm({ form: 'wordTestForm' })(WordTestForm)
+export default reduxForm({form: 'wordTestForm'})(WordTestForm)

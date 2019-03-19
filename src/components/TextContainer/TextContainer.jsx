@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { loadText, translateSelection } from '../../actions';
+import { loadText, translateSelection, saveStartReadingDate } from '../../actions';
 import './TextContainer.scss';
 
 class TextContainer extends React.Component {
@@ -9,6 +9,7 @@ class TextContainer extends React.Component {
         if (this.props.text.length === 0) {
             this.props.loadText();
         }
+        this.props.saveStartReadingDate();
     }
 
     handleTextSelection = () => {
@@ -57,4 +58,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, { loadText, translateSelection })(TextContainer);
+export default connect(mapStateToProps, { loadText, translateSelection, saveStartReadingDate })(TextContainer);
