@@ -3,6 +3,7 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import Reading from './Reading/Reading';
 import Testing from './Testing/Testing';
 import './App.scss';
+import connect from "react-redux/es/connect/connect";
 
 const App = () => {
     return (
@@ -15,6 +16,13 @@ const App = () => {
             </BrowserRouter>
         </div>
     )
-}
+};
 
-export default App;
+const mapStateToProps = (state) => {
+    return {
+        language: state.locale.value
+    };
+};
+
+export default connect(mapStateToProps)(App);
+// export default App;

@@ -55,6 +55,6 @@ const mapStateToProps = (state) => {
         translation: state.translation,
         wordCards: state.wordCards
     }
-}
+};
 
 export default connect(mapStateToProps, { loadText, translateSelection })(TextContainer);
