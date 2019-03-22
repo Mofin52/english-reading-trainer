@@ -15,6 +15,10 @@ module.exports = {
     module: {
         rules: [
             {
+                test: /\.tsx?$/,
+                loader: "awesome-typescript-loader"
+            },
+            {
                 test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
                 use: ['babel-loader']
@@ -56,7 +60,7 @@ module.exports = {
 
     ],
     resolve: {
-        extensions: ['*', '.js', '.jsx']
+        extensions: ['*', '.js', '.jsx', '.ts', '.tsx'],
     },
     devServer: {
         contentBase: './dist',
