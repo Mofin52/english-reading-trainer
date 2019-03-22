@@ -1,15 +1,15 @@
-import React from 'react';
+import * as React from 'react';
 import './SideNotes.scss';
 import WordCard from '../WordCard/WordCard';
 import { connect } from 'react-redux';
 
-class SideNotes extends React.Component {
+class SideNotes extends React.Component<IProps> {
     
-    renderCardsList() {
+    public renderCardsList():JSX.Element[] {
         return Object.keys(this.props.cards)
-            .map((word, i) => {
+            .map((word) => {
                 return <WordCard
-                    className='testytest'
+                    className='basic'
                     word={word}
                     translation={this.props.cards[word]}
                     key={word}
@@ -17,7 +17,7 @@ class SideNotes extends React.Component {
             });
     }
 
-    render() {
+    public render():JSX.Element {
         return (
             <div className='reading-trainer__sidenotes'>
                 {this.renderCardsList()}
@@ -26,7 +26,11 @@ class SideNotes extends React.Component {
     }
 }
 
-const mapStateToProps = (state) => {
+interface IProps {
+    cards: Object
+}
+
+const mapStateToProps = (state):Object => {
     return {
         cards: state.translation,
     }

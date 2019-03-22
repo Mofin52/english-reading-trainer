@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { connect } from 'react-redux';
 import { Field, reduxForm} from 'redux-form';
 import { Redirect } from 'react-router-dom';
@@ -9,12 +9,9 @@ import RenderForm from './RenderForm';
 const MAX_FIELDS = 10;
 const MAX_MARK = 10;
 
-class WordTestForm extends React.Component {
-    setRef = elem => {
-        this[this.props.label] = elem
-    };
+class WordTestForm extends React.Component<IProps> {
     
-    renderFormWordCards = () => {
+    public renderFormWordCards = ():JSX.Element[] => {
         return Object.keys(this.props.translation)
             .map((word, i) => {
                 if (i < MAX_FIELDS) {
@@ -30,7 +27,7 @@ class WordTestForm extends React.Component {
             });
     }
 
-    onSubmit = (formValues) => {
+    public onSubmit = (formValues):void => {
         let corrects = 0;
         const totalFields = Object.keys(this.props.translation).length <= MAX_FIELDS ? Object.keys(this.props.translation).length : MAX_FIELDS;
         Object.keys(this.props.translation).map((el, i) => {
@@ -57,7 +54,7 @@ class WordTestForm extends React.Component {
         });
     }
 
-    render() {
+    public render():JSX.Element {
         const renderBlock = (
             <div className='reading-trainer__form'>
                 <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
@@ -70,12 +67,18 @@ class WordTestForm extends React.Component {
     }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state):Object => {
     return {
         translation: state.translation
     }
 }
 
-WordTestForm = connect(mapStateToProps, { submitCheckResult })(WordTestForm);
+interface IProps {
+    handleSubmit: Function;
+    submitCheckResult: Function;
+    translation: Object;
+}
 
-export default reduxForm({ form: 'wordTestForm' })(WordTestForm)
+const WordTestFormConnected = connect(mapStateToProps, { submitCheckResult })(WordTestForm);
+
+export default reduxForm({ form: 'wordTestForm' })(WordTestFormConnected)

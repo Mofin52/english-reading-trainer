@@ -1,17 +1,17 @@
-import React from 'react';
+import * as React from 'react';
 import { connect } from 'react-redux';
 import { loadText, translateSelection } from '../../actions';
 import './TextContainer.scss';
 
-class TextContainer extends React.Component {
+class TextContainer extends React.Component<IProps> {
 
-    componentDidMount() {
+    public componentDidMount():void {
         if (this.props.text.length === 0) {
             this.props.loadText();
         }
     }
 
-    handleTextSelection = () => {
+    public handleTextSelection = ():void => {
         const selection = window.getSelection().toString().replace(/[.',\/#!?$%\^&\*;:{}=\-_`~()“”"]/g,"");
         if (selection && selection.length) {
             selection
@@ -29,7 +29,7 @@ class TextContainer extends React.Component {
         }
     }
 
-    renderText() {
+    public renderText():JSX.Element[] {
         if (this.props.text.length) {
             return this.props.text.map(el =>
                 <p key={el.slice(0, 15)}>{el}</p>
@@ -37,7 +37,7 @@ class TextContainer extends React.Component {
         }
     }
 
-    render() {
+    public render():JSX.Element {
         return(
             <div
                 className='reading-trainer__text-container'
@@ -49,12 +49,20 @@ class TextContainer extends React.Component {
     }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state):Object => {
     return {
         text: state.text.text,
         translation: state.translation,
-        wordCards: state.wordCards
+        wordCards: state.wordCards,
     }
+}
+
+interface IProps {
+    text: Array<string>;
+    translation: Object;
+    wordCards: Object;
+    loadText: Function;
+    translateSelection: Function;
 }
 
 export default connect(mapStateToProps, { loadText, translateSelection })(TextContainer);

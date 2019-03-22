@@ -1,9 +1,9 @@
-import React from 'react';
+import * as React from 'react';
 import { connect } from 'react-redux';
 import './AppHeader.scss';
 
-class AppHeader extends React.Component {
-    render(){
+class AppHeader extends React.Component<IProps> {
+    public render():JSX.Element {
         return (            
                 <div className='reading-trainer__header'>
                     <h1>English Reading Trainer{this.props.mode === 'testing' ? ' - Test' : ''}</h1>
@@ -31,7 +31,14 @@ class AppHeader extends React.Component {
     }
 }
 
-const mapStateToProps = (state) => {
+interface IProps {
+    mode: string;
+    title: string;
+    words: Array<Object>
+    cards: Array<Object>
+}
+
+const mapStateToProps = (state):Object => {
     return {
         title: state.text.title,
         words: state.text.words,

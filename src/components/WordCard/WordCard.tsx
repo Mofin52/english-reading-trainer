@@ -1,10 +1,10 @@
-import React from 'react';
+import * as React from 'react';
 import { connect } from 'react-redux';
 import { registerWordCard } from '../../actions';
 import './WordCard.scss';
 
-const WordCard = (props) => {
-    const ref = React.createRef();
+const WordCard:Function = (props:IProps):JSX.Element => {
+    const ref = React.createRef<HTMLDivElement>();
     
     props.registerWordCard({
         dom: ref,
@@ -17,6 +17,12 @@ const WordCard = (props) => {
             <p className='translation'>{props.translation}</p>
         </div>
     );
+}
+
+interface IProps {
+    registerWordCard: Function;
+    word: string;
+    translation: string;
 }
 
 export default connect(null, { registerWordCard })(WordCard);

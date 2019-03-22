@@ -1,11 +1,11 @@
-import React from 'react';
+import * as React from 'react';
 import TextContainer from '../TextContainer/TextContainer';
 import AppHeader from '../AppHeader/AppHeader';
 import TrainerControls from '../TrainerControls/TrainerControls';
 import SideNotes from '../SideNotes/SideNotes';
 import './Reading.scss';
 
-const Reading = () => {
+const Reading = ():JSX.Element => {
     return(
         <div>            
             <AppHeader mode='reading'/>

@@ -1,10 +1,10 @@
-import React from 'react';
+import * as React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import Reading from './Reading/Reading';
 import Testing from './Testing/Testing';
 import './App.scss';
 
-const App = () => {
+const App = ():JSX.Element => {
     return (
         <div className='reading-trainer'>
             <BrowserRouter>

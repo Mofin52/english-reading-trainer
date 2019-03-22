@@ -1,8 +1,8 @@
-import React from 'react';
+import * as React from 'react';
 import { connect } from 'react-redux';
 import './Results.scss';
 
-const Results = (props) => {
+const Results = (props:IProps):JSX.Element => {
         const markClass = `reading-trainer__mark ${props.mark >= 7 ? 'good' : props.mark >= 4 ? 'normal' : 'bad' }`;
         
         const renderBlock = (
@@ -22,12 +22,17 @@ const Results = (props) => {
 
 }
 
-const mapStateToProps = ({result, translation}) => {
+interface IProps {
+    mark: number;
+    corrects: number;
+    totalFields: number;
+}
+
+const mapStateToProps = ({result}):Object => {
     return {
         mark: result.mark,
         corrects: result.corrects,
-        totalFields: result.totalFields,
-        translation: translation
+        totalFields: result.totalFields
     }
 }
 
