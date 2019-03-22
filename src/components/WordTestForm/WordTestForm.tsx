@@ -36,7 +36,6 @@ class WordTestForm extends React.Component<IProps> {
                 const inputCard_input : HTMLInputElement = this[el].getRenderedComponent()[`${el}_input`];
                 inputCard.classList.add('solved');
                 inputCard_input.disabled = true;
-                console.log(formValues);
                 if (formValues[el] && formValues[el].toLowerCase() === this.props.translation[el].toLowerCase()) {
                     inputCard.classList.add('correct')
                     corrects += 1;
