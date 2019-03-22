@@ -7,7 +7,7 @@ class SideNotes extends React.Component<IProps> {
     
     public renderCardsList():JSX.Element[] {
         return Object.keys(this.props.cards)
-            .map((word) => {
+            .map((word:string) => {
                 return <WordCard
                     className='basic'
                     word={word}

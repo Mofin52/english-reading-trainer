@@ -12,13 +12,12 @@ class TextContainer extends React.Component<IProps> {
     }
 
     public handleTextSelection = ():void => {
-        const selection = window.getSelection().toString().replace(/[.',\/#!?$%\^&\*;:{}=\-_`~()“”"]/g,"");
+        const selection : string = window.getSelection().toString().replace(/[.',\/#!?$%\^&\*;:{}=\-_`~()“”"]/g,"");
         if (selection && selection.length) {
             selection
                 .split(" ")
-                .filter(el => el.length)
-                .map(
-                    word => {
+                .filter((el:string) => el.length)
+                .map((word:string) => {
                         if (this.props.translation[word] !== undefined) {
                             this.props.wordCards[word].current.classList.add('repeat');
                         } else {

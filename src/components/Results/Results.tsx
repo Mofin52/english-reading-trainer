@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 import './Results.scss';
 
 const Results = (props:IProps):JSX.Element => {
-        const markClass = `reading-trainer__mark ${props.mark >= 7 ? 'good' : props.mark >= 4 ? 'normal' : 'bad' }`;
+        const markClass : string = `reading-trainer__mark ${props.mark >= 7 ? 'good' : props.mark >= 4 ? 'normal' : 'bad' }`;
         
-        const renderBlock = (
+        const renderBlock:JSX.Element = (
             <div className='reading-trainer__results'>
                 You answered right {props.corrects} out of {props.totalFields}.
                <br/>
