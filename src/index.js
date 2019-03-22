@@ -23,6 +23,13 @@ i18n.init({
                 'key4': "Now answer the test and get your mark.",
                 'key5': "Words: ",
                 'key6': "Found and unknown one? Select it to translate",
+                'result1': 'You answered right',
+                'result2': 'out of ',
+                'result3': 'points',
+                'Testme': 'Test me!',
+                'Back': 'Back & Reset',
+                'Check': 'Check'
+
             }
         },
         'ru': {
@@ -36,6 +43,16 @@ i18n.init({
                 'key4': "А теперь решите тест и получите оценку.",
                 'key5': "Кол-во слов:",
                 'key6': "Видишь незнакомое слово? Выдели его для перевода",
+                'result1': 'Вы правильно перевели',
+                'result2': 'из ',
+                'Testme': 'Тест!',
+                'Back': 'Заново',
+                'Check': 'Оценка',
+                'result3': 'очков',
+                'result3_0': 'очко',
+                'result3_1': 'очка',
+                'result3_2': 'очков',
+
             }
         }
     }

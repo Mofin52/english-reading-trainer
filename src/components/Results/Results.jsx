@@ -1,16 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import './Results.scss';
+import i18next from 'i18next';
 
 const Results = (props) => {
         const markClass = `reading-trainer__mark ${props.mark >= 7 ? 'good' : props.mark >= 4 ? 'normal' : 'bad' }`;
         
         const renderBlock = (
             <div className='reading-trainer__results'>
-                You answered right {props.corrects} out of {props.totalFields}.
+                {(i18next.t('result1'))} {props.corrects} {(i18next.t('result2'))} {props.totalFields}.
                <br/>
                <span className={markClass}>
-                    {props.mark} points
+                    {props.mark} {(i18next.t('result3'))}
                 </span>
             </div>
         );

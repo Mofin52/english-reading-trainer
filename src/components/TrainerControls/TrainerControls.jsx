@@ -3,13 +3,14 @@ import { connect } from 'react-redux';
 import { Link } from  'react-router-dom';
 import { resetState } from '../../actions';
 import './TrainerControls.scss';
+import i18next from 'i18next';
 
 class TrainerControls extends React.Component {   
 
     renderReadingControls() {
         return (
             <div className='reading-trainer__controls'>
-                {Object.keys(this.props.translation).length > 0 ? <Link to="/testing"><button>Test me!</button></Link> : null}
+                {Object.keys(this.props.translation).length > 0 ? <Link to="/testing"><button>{(i18next.t('Testme'))}</button></Link> : null}
             </div>
         );
     }
@@ -17,7 +18,7 @@ class TrainerControls extends React.Component {
     renderTestingControls() {
         return (
             <div className='reading-trainer__controls'>
-                <Link to="/"><button onClick={this.props.resetState} className="reset">Back & Reset</button></Link>
+                <Link to="/"><button onClick={this.props.resetState} className="reset">{(i18next.t('Back'))}</button></Link>
             </div>
         );
     }

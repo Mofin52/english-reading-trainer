@@ -5,6 +5,7 @@ import { Redirect } from 'react-router-dom';
 import { submitCheckResult } from '../../actions'
 import './WordTestForm.scss';
 import RenderForm from './RenderForm';
+import i18next from 'i18next';
 
 const MAX_FIELDS = 10;
 const MAX_MARK = 10;
@@ -62,7 +63,7 @@ class WordTestForm extends React.Component {
             <div className='reading-trainer__form'>
                 <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
                     {this.renderFormWordCards()}
-                    <button className='reading-trainer__submit'>Check</button>
+                    <button className='reading-trainer__submit'>{(i18next.t('Check'))}</button>
                 </form>
             </div>
         );
